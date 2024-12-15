@@ -24,11 +24,6 @@ dependencies {
     testImplementation 'io.quarkus:quarkus-test-vertx:3.17.4'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
-}
-
 test {
     testLogging.showStandardStreams = true
 }
