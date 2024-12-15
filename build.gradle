@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version "3.17.4"
+    id "io.freefair.lombok" version "8.10"
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+tasks.register('createGradleWrapper', Wrapper) { gradleVersion = '8.9' }
+
+dependencies {
+    implementation 'io.quarkus:quarkus-rest-jackson'
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:3.17.4")
+    implementation 'io.quarkus:quarkus-rest'
+    implementation 'io.quarkus:quarkus-reactive-pg-client'
+    implementation 'io.quarkus:quarkus-hibernate-reactive-panache'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'io.quarkus:quarkus-test-hibernate-reactive-panache:3.13.0'
+    testImplementation 'io.quarkus:quarkus-test-vertx:3.17.4'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+test {
+    testLogging.showStandardStreams = true
+}
